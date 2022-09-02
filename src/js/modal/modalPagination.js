@@ -18,17 +18,13 @@ export function modalPagination(maxPages) {
 
     toggleModal();
     let timer = null;
-    // document.querySelector('body').style = '';
 
-    // document.querySelector('body').classList.add('is-open');// мешали
-    // document.querySelector('body').classList.toggle('is-open');// мешали
     timer = setInterval(() => {
       if (refs.modalPagination.classList.contains('is-hidden')) {
         const page = refs.backdropPagination.dataset.page;
         clearInterval(timer);
         if (Number(page) !== 0) {
           resolve(page);
-          
         } else {
           reject('перехід не відбувся');
         }
@@ -40,22 +36,25 @@ export function modalPagination(maxPages) {
 }
 
 function toggleModal() {
-   const scrollY = document.documentElement.style.getPropertyValue('--scroll-y'); 
-console.log(scrollY);
-  refs.modalPagination.classList.toggle('is-hidden'); 
+  const scrollY = document.documentElement.style.getPropertyValue('--scroll-y');
+  console.log(scrollY);
+  refs.modalPagination.classList.toggle('is-hidden');
   funcControlArts(document.querySelectorAll('.t-js')); // полный контроль стилей
 
-  if (document.querySelector('[modal-pagination]').classList.contains('is-hidden')) {
-      
-          close.blockScroll('auto', ``, ``, '');
-          return window.scrollTo(0, parseInt(document.body.style.top || '0') * -1); 
-        }
-
-  else { return close.blockScroll('scroll', `${scrollY}`, `${controlScreen()}`, 'fixed') };
-    
+  if (
+    document.querySelector('[modal-pagination]').classList.contains('is-hidden')
+  ) {
+    close.blockScroll('auto', ``, ``, '');
+    return window.scrollTo(0, parseInt(document.body.style.top || '0') * -1);
+  } else {
+    return close.blockScroll(
+      'scroll',
+      `${scrollY}`,
+      `${controlScreen()}`,
+      'fixed'
+    );
+  }
 }
-
-
 
 function onInputChange(event) {
   event.preventDefault();

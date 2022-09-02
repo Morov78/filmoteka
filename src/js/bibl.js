@@ -1,9 +1,8 @@
-
-import { btnDayNight } from '../../js/btnDayNight';
-import { renderLibraryList, scrollToTop } from '../../js/container';
-import { refs } from '../../js/refs';
-import { funcControlArts } from '../../js/arts';
-import { trackingEmptyLibrary } from '../../js/trackingEmptyLibrary/trackingEmptyLibrary';
+import { btnDayNight } from './btnDayNight';
+import { renderLibraryList, scrollToTop } from './container';
+import { refs } from './refs';
+import { funcControlArts } from './arts';
+import { trackingEmptyLibrary } from './trackingEmptyLibrary/trackingEmptyLibrary';
 // import { trackingFunFooter } from '../../js/trackingFunFooter/trackingFunFooter';
 
 const NUMBER_MOVIE_ON_PAGE = 6; //кількість фільмів на сторінку
@@ -26,7 +25,6 @@ trackingEmptyLibrary(document.querySelector('.gallery__list'));
 //   trackingFunFooter();
 // }
 
-
 //клік по кнопкам вибору групи
 function onClickButtons(event) {
   const selectData = event.target.dataset.lang;
@@ -39,14 +37,14 @@ function onClickButtons(event) {
   data = getDataActiveGroup();
   page = 1;
   fetchDataLibrary(data);
-  trackingEmptyLibrary(document.querySelector('.gallery__list'));// кон
+  trackingEmptyLibrary(document.querySelector('.gallery__list')); // кон
   toggleClassOnButtons(selectData);
 }
 //тоглим класи на кнопках при іншому виборі
 function toggleClassOnButtons(currentPage) {
   const buttons = [...refs.buttonsContainer.children];
   buttons.map(button => button.classList.toggle('selected'));
-    trackingEmptyLibrary(document.querySelector('.gallery__list'));// кон
+  trackingEmptyLibrary(document.querySelector('.gallery__list')); // кон
 }
 
 // добавляєм клас selected для активної групи
@@ -94,9 +92,8 @@ function fetchDataLibrary() {
     page,
     Math.ceil(data.length / NUMBER_MOVIE_ON_PAGE)
   );
-  
-  trackingEmptyLibrary(document.querySelector('.gallery__list'));// кон
-  
+
+  trackingEmptyLibrary(document.querySelector('.gallery__list')); // кон
 }
 //подія при закриті модалки
 function onCloseModal() {
@@ -112,7 +109,6 @@ function onCloseModal() {
   // if (data === 0) {
   //   trackingFunFooter();
   // }
-
 }
 //отримуємо дані з локалсторадж активної групи
 function getDataActiveGroup() {
@@ -123,9 +119,6 @@ function getDataActiveGroup() {
   return JSON.parse(currentData);
 }
 
-
-
-document.querySelector('.wached').addEventListener('click', trackingEmptyLibrary);// контроль контейнера
-
-
-
+document
+  .querySelector('.wached')
+  .addEventListener('click', trackingEmptyLibrary); // контроль контейнера
