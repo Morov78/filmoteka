@@ -1,20 +1,17 @@
-@import './variable.scss';
-@import './common';
-@import './base';
-@import './mixin.scss';
-@import './header.scss';
+@import './utils/variable';
+@import './utils/common';
+@import './components/base';
+@import './utils/mixin';
+@import './header';
 @import './gallery';
 @import './galleryPagination';
-@import './components/footer.scss';
-@import './modal-footer';
-// <<<<<<< Updated upstream
-@import './modal';
-@import './removebtn';
-@import '../sass/btnDayNight';
-@import '../sass/scrollbar';
+@import './footer';
+@import './components/modal-footer';
+@import './components/modal';
+@import './components/removebtn';
+@import './components/btnDayNight';
+@import './components/scrollbar';
 @import'./components/preloader';
-// =======
-// @import '../sass/modal.scss';
 @import './components/modalPagination';
-// >>>>>>> Stashed changes
+
 

@@ -17,14 +17,7 @@ function markupList(data, genresList) {
         if (!genre_ids) {
           genre_ids = genres.map(genre => genre.id);
         }
-        const genresMovie = getGenresMovie(genre_ids, genresList);
-        let date;
 
-        const roundRating = Math.round(vote_average * 10).toString();
-        const goodRating =
-          roundRating.slice(0, roundRating.length - 1) +
-          '.' +
-          roundRating[roundRating.length - 1];
         return `
       <li class="gallery__item  "  data-ip=${id}>
         <img class="gallery__img  "
@@ -35,16 +28,32 @@ function markupList(data, genresList) {
          } loading="lazy">
         <div class="gallery__info">
           <p class="gallery__title them">${title}</p>
-          <p class="gallery__text them">${genresMovie} | <span>${getDate(
+          <p class="gallery__text them">${getGenresMovie(
+            genre_ids,
+            genresList
+          )} | <span>${getDate(
           release_date
-        )}</span><span class="gallery__rating them">${goodRating}</span></p>
-
-
+        )}</span><span class="gallery__rating them ">${getRating(
+          vote_average
+        )}</span></p>
         </div>
       </li>`;
       }
     )
     .join(' ');
+}
+function getRating(vote_average) {
+  const roundRating = Math.round(vote_average * 10);
+  if (roundRating === 0) {
+    return '0.0';
+  }
+  const roundRatingString = roundRating.toString();
+  const length = roundRatingString.length;
+  const goodRating =
+    roundRatingString.slice(0, length - 1) +
+    '.' +
+    roundRatingString[length - 1];
+  return goodRating;
 }
 function getDate(release_date) {
   if (!release_date) {

@@ -22,14 +22,7 @@ refs.avtoLogin.addEventListener('click', funcLoginControl);
 fetchData();
 
 btnDayNight();
-funcCheck(); 
-
-// function onClickPagginationList(event) {
-//   const currentPage = event.target.dataset.page;
-//   if (!currentPage) {
-//     return;
-//   }
-//   movieAPiServer.pageCounter = Number(currentPage);
+funcCheck();
 
 function checkCurrentPage() {
   if (currentGroup === 'home') {
@@ -71,16 +64,12 @@ function fetchData() {
   //   return error;
   // });
 }
-console.log(document.querySelector('.js-auth'));
-
-
 
 function onSubmitForm(event) {
   event.preventDefault();
   const searchQuery = event.currentTarget.elements.searchQuery.value.trim();
   refs.form.elements.searchQuery.value = '';
   if (searchQuery === '') {
-    console.log('test');
     Notify.failure('Please enter something', { width: '180px' });
     return;
   }
@@ -132,10 +121,3 @@ function clearList() {
 }
 
 //  window.addEventListener('onload',funcControlArts);
-
-
-
-
-
-
-
