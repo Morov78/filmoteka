@@ -1,6 +1,6 @@
 import { btnDayNight } from './js/btnDayNight';
 import { renderMoviesList, scrollToTop } from './js/container';
-import MovieAPiServer from './RequestApi/requestAPI';
+import MovieAPiServer from './js/RequestApi/requestAPI';
 import { refs } from './js/refs';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { paramsNotify } from './js/notify-params/notify-styles';
