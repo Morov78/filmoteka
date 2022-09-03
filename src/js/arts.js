@@ -1,7 +1,6 @@
 export const funcControlArts = title => {
   const body = document.querySelector('body');
   if (body.classList.contains('section-night')) {
-    // const title = document.querySelectorAll('.gallery__title .them');
     document.querySelector('.form__input').style.color = '#fff';
     document.querySelector('.form__input').style.backgroundColor = '#2D2A2A';
     document.querySelector('.modal-pagination').style.backgroundColor =
@@ -18,6 +17,7 @@ export const funcControlArts = title => {
     document.querySelector('.footer-block').style.color = '#f7f7f7';
     return title.forEach(t => (t.style.color = '#fff'));
   }
+
   document.querySelector('.form__input').style.color = '#000';
   document.querySelector('.form__input').style.backgroundColor = '#fff';
   document.querySelector('.modal-pagination').style.backgroundColor = '#fff';
