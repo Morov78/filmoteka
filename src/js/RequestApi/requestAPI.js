@@ -12,7 +12,7 @@ export default class MovieAPiServer {
   constructor() {
     this.searchQuery = '';
     this.pageCounter = 1;
-
+    this.language = 'uk-UA';
     this.API_KEY = 'a1157fee69973f579feaed0c038c358a';
     this.movieId = null;
 
@@ -23,7 +23,7 @@ export default class MovieAPiServer {
   }
   //зміни запит популярні фільми за тиждень
   async fetchTopMovies() {
-    const URL = `/3/trending/movie/week?api_key=${this.API_KEY}&page=${this.pageCounter}`;
+    const URL = `/3/trending/movie/week?api_key=${this.API_KEY}&page=${this.pageCounter}&language=${this.language}`;
     try {
       const response = await http.get(URL);
       //добавив
@@ -37,7 +37,7 @@ export default class MovieAPiServer {
 
   //добавив запит на жанри, можна один раз його зробити
   async getGenresList() {
-    const URL = `/3/genre/movie/list?api_key=${this.API_KEY}`;
+    const URL = `/3/genre/movie/list?api_key=${this.API_KEY}&language=${this.language}`;
     try {
       const response = await http.get(URL);
       const genresList = response.data.genres;
@@ -48,7 +48,7 @@ export default class MovieAPiServer {
   }
   // ----
   async fetchMovieById() {
-    const URL = `/3/movie/${this.movieId}?api_key=${this.API_KEY}`;
+    const URL = `/3/movie/${this.movieId}?api_key=${this.API_KEY}&language=${this.language}`;
 
     try {
       const response = await http.get(URL);
@@ -61,7 +61,7 @@ export default class MovieAPiServer {
 
   async fetchMovieByQuery() {
     console.log('test');
-    const URL = `/3/search/movie?api_key=${this.API_KEY}&page=${this.pageCounter}&query=${this.searchQuery}`;
+    const URL = `/3/search/movie?api_key=${this.API_KEY}&page=${this.pageCounter}&query=${this.searchQuery}&language=${this.language}`;
 
     try {
       const response = await http.get(URL);
