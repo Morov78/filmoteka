@@ -7,10 +7,19 @@ import { paramsNotify } from './js/notify-params/notify-styles';
 import { modalPagination } from './js/modal/modalPagination';
 import { funcLoginControl } from './js/AutoForm/js/avtoLogin';
 import { funcCheck } from './js/AutoForm/js/avtoLogin';
+import { debounce } from 'lodash';
+import { languageRender } from './js/languageRender';
+
+refs.languageSwitch = document.querySelector('.language__input');
 
 let currentGroup = 'home';
+const languageList = ['en-US', 'uk-UA'];
 
 const movieAPiServer = new MovieAPiServer();
+// console.log(movieAPiServer.language);
+checkLanguage();
+
+// console.log(movieAPiServer.language);
 movieAPiServer.getGenresList();
 Notify.init(paramsNotify);
 
@@ -18,10 +27,15 @@ refs.pagginationList.addEventListener('click', onClickPagginationList);
 refs.form.addEventListener('submit', onSubmitForm);
 refs.galleryList.classList.add('home');
 refs.avtoLogin.addEventListener('click', funcLoginControl);
+refs.languageSwitch.addEventListener(
+  'change',
+  debounce(onChangeLanguageSwitch, 500)
+);
 // window.addEventListener("keydown", toggleModalEscape);// футер модал ескейп
+console.log(document.querySelector('.language__input').checked);
+btnDayNight();
 fetchData();
 
-btnDayNight();
 funcCheck();
 
 function checkCurrentPage() {
@@ -120,4 +134,31 @@ function clearList() {
   refs.pagginationList.innerHTML = '';
 }
 
-//  window.addEventListener('onload',funcControlArts);
+async function onChangeLanguageSwitch(event) {
+  const checked = event.target.checked;
+  const oldLanguage = movieAPiServer.language;
+  checked
+    ? (movieAPiServer.language = languageList[0])
+    : (movieAPiServer.language = languageList[1]);
+  // console.log(movieAPiServer.language);
+  if (oldLanguage === movieAPiServer.language) {
+    return;
+  }
+  await movieAPiServer.getGenresList();
+  checkCurrentPage();
+  location.href = window.location.pathname;
+  location.reload();
+}
+function checkLanguage() {
+  const oldLanguage = movieAPiServer.language;
+  const language =
+    JSON.parse(localStorage.getItem('language')) || languageList[0];
+  movieAPiServer.language = language;
+  document.querySelector('body').classList.add(`${language}`);
+  if (language === languageList[0]) {
+    refs.languageSwitch.checked = true;
+  } else {
+    refs.languageSwitch.checked = false;
+  }
+  languageRender(language);
+}

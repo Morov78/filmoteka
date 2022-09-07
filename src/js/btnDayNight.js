@@ -26,7 +26,6 @@ export function btnDayNight() {
 
 const toggleNightMode = () => {
   const section = document.querySelector('body');
-
   document.querySelectorAll('.switch-btn').forEach(btn => {
     btn.classList.toggle('switch-on');
     localStorage.setItem('btn', 'switch-on');

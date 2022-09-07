@@ -3,7 +3,7 @@
 <header class="header header__home">
   <div class="container">
     <a href="./js/AutoForm/form.html" class="custom-btn btn-A"
-      ><span>Authorization</span></a
+      ><span class="lang-authorization">Authorization</span></a
     >
     <div class="header__container">
       <a href="./index.html" class="logo-link">
@@ -16,6 +16,17 @@
         </svg>
         <span class="logo-text tracking-in-expand">Filmoteka</span></a
       >
+      <div class="switch-language">
+        <label class="language__label" for="language">
+          <input
+            class="language__input"
+            name="language"
+            id="language"
+            type="checkbox"
+            checked
+          />
+        </label>
+      </div>
       <nav class="navigation">
         <ul class="nav-list">
           <li class="nav-item active__page">
@@ -23,11 +34,10 @@
               href="#"
               rel="noopener noreferrer"
               data-lang="home"
-              class="nav-btn home__btn"
+              class="nav-btn home__btn lang-title"
               type="button"
+              >home</a
             >
-              home
-            </a>
           </li>
 
           <li class="nav-item" data-auth="false">
@@ -35,7 +45,7 @@
               href="./biblioteca.html"
               rel="noopener noreferrer"
               data-lang="library"
-              class="nav-btn library__btn js-auth"
+              class="nav-btn library__btn js-auth lang-library"
             >
               my library
             </a>
@@ -53,7 +63,7 @@
     <form class="search-form js-form">
       <input
         data-lang="placeholder"
-        class="input-form"
+        class="input-form lang-input"
         type="text"
         name="searchQuery"
         placeholder="Movie search"

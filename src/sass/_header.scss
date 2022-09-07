@@ -5,9 +5,11 @@
 
     @include mq(tablet) {
         height: 216px;
-    } 
+    }
 }
-
+// .header__container {
+//   position: relative;
+// }
 .header__home {
     background-image: linear-gradient(90deg, rgba(0, 0, 0, .56), rgba(0, 0, 0, .56)), url(/src/images/mob/header-mob@1x.jpg);
     background-size: cover;
@@ -22,7 +24,7 @@
     @include mq(tablet) {
         padding-bottom: 81px;
             background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/tab/header-tab@1x.jpg);
-        
+
             @media (min-device-pixel-ratio: 2),
             (-webkit-min-device-pixel-ratio: 2),
             (min-resolution: 192dpi),
@@ -34,7 +36,7 @@
 
     @include mq(desktop){
         background-image: linear-gradient(90deg, rgba(0, 0, 0, .56), rgba(0, 0, 0, .56)), url(/src/images/desc/header-desc@1x.jpg);
-    
+
             @media (min-device-pixel-ratio: 2),
             (-webkit-min-device-pixel-ratio: 2),
             (min-resolution: 192dpi),
@@ -59,7 +61,7 @@
 .logo-link {
     display: flex;
     align-items: center;
-        
+
 }
 
 .logo-text {
@@ -70,11 +72,11 @@
     font-size: 30px;
     line-height: 1.17;
     display: flex;
-    
+
     margin-left: 8px;
-    
+
     color: #FFFFFF;
-    
+
     &:hover{
         color: #FF001B;
         transition: 1s ease;
@@ -218,7 +220,7 @@
         padding-bottom: 81px;
             // margin-bottom: 60px;
             background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, .56)), url(/src/images/tab/header-tab-lib@1x.jpg);
-        
+
             @media (min-device-pixel-ratio: 2),
             (-webkit-min-device-pixel-ratio: 2),
             (min-resolution: 192dpi),
@@ -230,7 +232,7 @@
 
     @include mq(desktop){
         background-image: linear-gradient(90deg, rgba(0, 0, 0, .56), rgba(0, 0, 0, .56)), url(/src/images/desc/header-desc-lib@1x.jpg);
-        
+
             @media (min-device-pixel-ratio: 2),
             (-webkit-min-device-pixel-ratio: 2),
             (min-resolution: 192dpi),
@@ -279,16 +281,16 @@
 
     &:first-child {
             margin-right: 16px;
-    
+
             @include mq(tablet) {
                 margin-right: 32px;
             }
-    
+
             @include mq(desktop) {
                 margin-right: 16px;
             }
         }
-        
+
     &.selected {
         background-color: #FF6B01;
         border-color: #FF6B01;
@@ -462,14 +464,39 @@
     width: 100%;
 }
 
+.switch-language {
+  margin-left: 20px;
+}
 
+.language__label {
+ position: relative;
+ width: 20px;
+ height: 20px;
+ display: block;
+}
+.language__input {
+  width: 0px;
+  height: 0px;
+  &::after {
+    content: "";
+    cursor: pointer;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    background-image: url(../images/usa-circular.png);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: center;
 
-
-
-
-
-
-
+  }
+  &:not(:checked)::after {
+    background-image: url(../images/ukraine-circular.png);
+  }
+}
 
 
 
