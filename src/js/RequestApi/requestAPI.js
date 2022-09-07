@@ -12,16 +12,17 @@ export default class MovieAPiServer {
   constructor() {
     this.searchQuery = '';
     this.pageCounter = 1;
-    this.language = 'uk-UA';
     this.API_KEY = 'a1157fee69973f579feaed0c038c358a';
     this.movieId = null;
-
+    this.lang = '';
     // добавив
     // this.pageSearch = 1;
     this.maxPages = null;
     this.isLoadGenres = true;
   }
+
   //зміни запит популярні фільми за тиждень
+
   async fetchTopMovies() {
     const URL = `/3/trending/movie/week?api_key=${this.API_KEY}&page=${this.pageCounter}&language=${this.language}`;
     try {
@@ -60,7 +61,6 @@ export default class MovieAPiServer {
   }
 
   async fetchMovieByQuery() {
-    console.log('test');
     const URL = `/3/search/movie?api_key=${this.API_KEY}&page=${this.pageCounter}&query=${this.searchQuery}&language=${this.language}`;
 
     try {
@@ -92,5 +92,13 @@ export default class MovieAPiServer {
 
   set query(newQuery) {
     return (this.searchQuery = newQuery);
+  }
+  get language() {
+    return this.lang;
+  }
+
+  set language(language) {
+    localStorage.setItem('language', JSON.stringify(language));
+    return (this.lang = language);
   }
 }
